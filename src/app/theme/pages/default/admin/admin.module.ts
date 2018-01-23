@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {ButtonModule, DataTableModule} from "primeng/primeng";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     CommonModule, RouterModule.forChild(routes),
     LayoutModule,
     FormsModule,
+    NgbModule.forRoot(),
 
     // import primeNG
     DataTableModule,

@@ -242,7 +242,7 @@
           </ng-template>
           <ng-template let-car="rowData" pTemplate="body">
             <button pButton (click)="openModalUpdateUser(car)" title="Update User" class="ui-button-primary" icon="fa fa-pencil"></button>
-            <button pButton (click)="clickMe(car)"  title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
+            <button pButton  (click)="open(content,car)"  title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
           </ng-template>
         </p-column>
 
@@ -270,6 +270,39 @@
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal !-->
       <!--test-->
+
+      <!--Test with ng-bootstap-->
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+          <button type="button" class="btn btn-outline-dark" (click)="clickMe(c)">Close1</button>
+        </div>
+      </ng-template>
+      <!--Test with bootstap-->
 
     </div>
   </div>

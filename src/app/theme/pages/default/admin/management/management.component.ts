@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ScriptLoaderService} from "../../../../../_services/script-loader.service";
+import {AfterViewInit, Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
     selector: 'app-admin-management',
@@ -17,6 +18,8 @@ export class ManagementComponent implements OnInit, AfterViewInit{
   cars: Car[];
 
   cols: any[];
+
+  data = 'hehe';
 
   dummyCars = [
     {
@@ -163,35 +166,10 @@ export class ManagementComponent implements OnInit, AfterViewInit{
 
   userDatas: any [];
 
-  dummyData = [
-    {
-      username:'larry',
-      role: 'admin',
-    },
-    {
-      username:'larry1',
-      role: 'admin1',
-    },
-    {
-      username:'larry2',
-      role: 'admin2',
-    },
-    {
-      username:'larry3',
-      role: 'admin3',
-    },
-    {
-      username:'larry4',
-      role: 'admin4',
-    },
-  ];
-
-
-  constructor(private _script: ScriptLoaderService)  {
+  constructor(private modalService: NgbModal)  {
 
   }
   ngOnInit()  {
-    this.userDatas = this.dummyData;
     this.cars = this.dummyCars;
     this.cols = [
       {field: 'vin', header: 'Vin'},
@@ -206,8 +184,8 @@ export class ManagementComponent implements OnInit, AfterViewInit{
       'assets/app/js/management.js');*/
   }
 
-  clickMe(car: Car){
-    console.log('click me',car);
+  clickMe(c){
+    console.log('click me',c);
   }
 
   openModalUpdateUser(car: Car){
@@ -216,6 +194,18 @@ export class ManagementComponent implements OnInit, AfterViewInit{
   onCloseHandled(){
     this.display='none';
   }
+
+  open(content: TemplateRef<Car> ,car: Car) {
+    console.log('car:',JSON.stringify(car));
+    console.log('content:',content);
+    console.log('content:',content.elementRef.nativeElement);
+
+    this.modalService.open(content).result.then((result) => {
+      console.log('result is:',result);
+    }, (reason) => {
+    });
+  }
+
 }
 
 interface Car {
