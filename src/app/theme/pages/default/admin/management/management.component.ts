@@ -17,16 +17,16 @@ export class ManagementComponent implements OnInit, AfterViewInit{
 
   dummyCars = [
     {
-      vin:'hehe',
+      vin:'2143',
       year:1992,
       brand:'bmw',
       color:'red',
     },
     {
-      vin:'hehe',
+      vin:'5654',
       year:1992,
-      brand:'bmw',
-      color:'red',
+      brand:'mer',
+      color:'blue',
     },
     {
       vin:'hehe',
@@ -201,7 +201,10 @@ export class ManagementComponent implements OnInit, AfterViewInit{
   ngAfterViewInit()  {
     /*this._script.load('.m-grid__item.m-grid__item--fluid.m-wrapper',
       'assets/app/js/management.js');*/
+  }
 
+  clickMe(car: Car){
+    console.log('click me',car);
   }
 }
 

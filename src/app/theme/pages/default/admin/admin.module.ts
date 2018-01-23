@@ -6,9 +6,7 @@ import {LayoutModule} from "../../../layouts/layout.module";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
-import {DataTableModule} from "primeng/primeng";
-
-
+import {ButtonModule, DataTableModule} from "primeng/primeng";
 
 const routes: Routes = [
   {
@@ -33,7 +31,9 @@ const routes: Routes = [
     FormsModule,
 
     // import primeNG
-    DataTableModule
+    DataTableModule,
+    ButtonModule
+
   ], declarations: [
     AdminComponent,
     ManagementComponent,
