@@ -241,7 +241,7 @@
             Actions
           </ng-template>
           <ng-template let-car="rowData" pTemplate="body">
-            <button pButton (click)="clickMe(car)" title="Update User" class="ui-button-primary" icon="fa fa-pencil"></button>
+            <button pButton (click)="openModalUpdateUser(car)" title="Update User" class="ui-button-primary" icon="fa fa-pencil"></button>
             <button pButton (click)="clickMe(car)"  title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
           </ng-template>
         </p-column>
@@ -249,6 +249,27 @@
       </p-dataTable>
 
       <!--end: Datatable -->
+
+      <!--test-->
+
+      <div class="backdrop" [ngStyle]="{'display':display}"></div>
+      <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Model Title</h4>
+            </div>
+            <div class="modal-body">
+              <p>Model body text</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal !-->
+      <!--test-->
 
     </div>
   </div>

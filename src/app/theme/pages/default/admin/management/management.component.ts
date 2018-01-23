@@ -5,11 +5,14 @@ import {ScriptLoaderService} from "../../../../../_services/script-loader.servic
     selector: 'app-admin-management',
     templateUrl: "./management.component.html",
     encapsulation: ViewEncapsulation.None,
+
 })
 export class ManagementComponent implements OnInit, AfterViewInit{
 
   //test
   loading= false;
+
+  display = 'none';
 
   cars: Car[];
 
@@ -205,6 +208,13 @@ export class ManagementComponent implements OnInit, AfterViewInit{
 
   clickMe(car: Car){
     console.log('click me',car);
+  }
+
+  openModalUpdateUser(car: Car){
+    this.display='block';
+  }
+  onCloseHandled(){
+    this.display='none';
   }
 }
 
