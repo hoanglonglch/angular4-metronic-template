@@ -214,22 +214,21 @@
             </div>
           </div>
           <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-            <a href="#" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+            <button (click)="openModalAddUser(modalAddUser)" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 							<span>
 								<i class="la la-user-plus"></i>
 								<span>
 									Add New User
 								</span>
 							</span>
-            </a>
+            </button>
             <div class="m-separator m-separator--dashed d-xl-none"></div>
           </div>
         </div>
       </div>
       <!--end: Search Form -->
 
-      <!--begin: Datatable -->
-
+      <!--Table Manage User -->
       <p-dataTable [value]="cars" [loading]="loading" [globalFilter]="gb" #dt [rows]="10" [paginator]="true"  [responsive]="true" [stacked]="stacked">
         <p-column field="vin" header="Vin1" [sortable]="true"></p-column>
         <p-column field="year" header="Year" [sortable]="true"></p-column>
@@ -241,38 +240,46 @@
             Actions
           </ng-template>
           <ng-template let-car="rowData" pTemplate="body">
-            <button pButton (click)="openModalUpdateUser(car)" title="Update User" class="ui-button-primary" icon="fa fa-pencil"></button>
-            <button pButton  (click)="open(content,car)"  title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
+            <button pButton (click)="openModalUpdateUser(modalUpdateUser,car)" title="Update User" class="ui-button-primary" icon="fa fa-pencil"></button>
+            <button pButton  (click)="openModalUpdateUser(modalAddUser,car)"  title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
           </ng-template>
         </p-column>
 
       </p-dataTable>
+      <!--End: Table Manage User -->
 
-      <!--end: Datatable -->
-
-      <!--test-->
-
-      <div class="backdrop" [ngStyle]="{'display':display}"></div>
-      <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Model Title</h4>
+      <!--Modal Update User-->
+      <ng-template #modalUpdateUser let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Update User</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="usernameModalUpdateUer" class="col-sm-2 col-form-label">Username</label>
+              <div class="col-sm-10">
+                <input [attr.value]="car.vin" type="text" readonly class="form-control" id="usernameModalUpdateUer">
+              </div>
             </div>
-            <div class="modal-body">
-              <p>Model body text</p>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input [attr.value]="car.year" type="text" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal !-->
-      <!--test-->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
+      <!--End: Modal Update User-->
 
-      <!--Test with ng-bootstap-->
-      <ng-template #content let-c="close" let-d="dismiss">
+      <!--Modal Add User-->
+      <ng-template #modalAddUser let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title">Modal title</h4>
           <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -280,30 +287,14 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+          <p>One fine body&hellip;</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-          <button type="button" class="btn btn-outline-dark" (click)="clickMe(c)">Close1</button>
+          <button type="button" class="btn btn-secondary" (click)="c('Close click')">Submit</button>
         </div>
       </ng-template>
-      <!--Test with bootstap-->
-
+      <!--End: Modal Add User-->
+      
     </div>
   </div>
 </div>

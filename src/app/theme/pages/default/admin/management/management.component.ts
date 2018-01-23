@@ -12,15 +12,9 @@ export class ManagementComponent implements OnInit, AfterViewInit{
 
   //test
   loading= false;
-
-  display = 'none';
-
+  car: Car;
   cars: Car[];
-
   cols: any[];
-
-  data = 'hehe';
-
   dummyCars = [
     {
       vin:'2143',
@@ -163,20 +157,10 @@ export class ManagementComponent implements OnInit, AfterViewInit{
 
   ]
 
+  constructor(private modalService: NgbModal)  {}
 
-  userDatas: any [];
-
-  constructor(private modalService: NgbModal)  {
-
-  }
   ngOnInit()  {
     this.cars = this.dummyCars;
-    this.cols = [
-      {field: 'vin', header: 'Vin'},
-      {field: 'year', header: 'Year'},
-      {field: 'brand', header: 'Brand'},
-      {field: 'color', header: 'Color'}
-    ];
   }
 
   ngAfterViewInit()  {
@@ -184,24 +168,13 @@ export class ManagementComponent implements OnInit, AfterViewInit{
       'assets/app/js/management.js');*/
   }
 
-  clickMe(c){
-    console.log('click me',c);
+  openModalUpdateUser(content: TemplateRef<Car> ,carFromTable: Car) {
+    this.car = carFromTable;
+    this.modalService.open(content);
   }
 
-  openModalUpdateUser(car: Car){
-    this.display='block';
-  }
-  onCloseHandled(){
-    this.display='none';
-  }
-
-  open(content: TemplateRef<Car> ,car: Car) {
-    console.log('car:',JSON.stringify(car));
-    console.log('content:',content);
-    console.log('content:',content.elementRef.nativeElement);
-
+  openModalAddUser(content:TemplateRef<Car>) {
     this.modalService.open(content).result.then((result) => {
-      console.log('result is:',result);
     }, (reason) => {
     });
   }
