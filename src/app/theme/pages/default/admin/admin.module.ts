@@ -6,6 +6,8 @@ import {LayoutModule} from "../../../layouts/layout.module";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
+import {DataTableModule} from "primeng/primeng";
+
 
 
 const routes: Routes = [
@@ -29,6 +31,9 @@ const routes: Routes = [
     CommonModule, RouterModule.forChild(routes),
     LayoutModule,
     FormsModule,
+
+    // import primeNG
+    DataTableModule
   ], declarations: [
     AdminComponent,
     ManagementComponent,

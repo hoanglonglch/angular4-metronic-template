@@ -8,6 +8,156 @@ import {ScriptLoaderService} from "../../../../../_services/script-loader.servic
 })
 export class ManagementComponent implements OnInit, AfterViewInit{
 
+  //test
+  loading= false;
+
+  cars: Car[];
+
+  cols: any[];
+
+  dummyCars = [
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+    {
+      vin:'hehe',
+      year:1992,
+      brand:'bmw',
+      color:'red',
+    },
+
+  ]
+
+
   userDatas: any [];
 
   dummyData = [
@@ -33,11 +183,19 @@ export class ManagementComponent implements OnInit, AfterViewInit{
     },
   ];
 
+
   constructor(private _script: ScriptLoaderService)  {
 
   }
   ngOnInit()  {
     this.userDatas = this.dummyData;
+    this.cars = this.dummyCars;
+    this.cols = [
+      {field: 'vin', header: 'Vin'},
+      {field: 'year', header: 'Year'},
+      {field: 'brand', header: 'Brand'},
+      {field: 'color', header: 'Color'}
+    ];
   }
 
   ngAfterViewInit()  {
@@ -45,4 +203,11 @@ export class ManagementComponent implements OnInit, AfterViewInit{
       'assets/app/js/management.js');*/
 
   }
+}
+
+interface Car {
+  vin;
+  year;
+  brand;
+  color;
 }
