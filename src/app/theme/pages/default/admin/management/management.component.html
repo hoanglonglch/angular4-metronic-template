@@ -229,19 +229,19 @@
       <!--end: Search Form -->
 
       <!--Table Manage User -->
-      <p-dataTable [value]="cars" [loading]="loading" [globalFilter]="gb" #dt [rows]="10" [paginator]="true"  [responsive]="true" [stacked]="stacked">
+      <p-dataTable [value]="cars" [loading]="dataTableLoading" [globalFilter]="gb" #dt [rows]="10" [paginator]="true"  [responsive]="true" [stacked]="stacked">
         <p-column field="vin" header="Vin1" [sortable]="true"></p-column>
         <p-column field="year" header="Year" [sortable]="true"></p-column>
         <p-column field="brand" header="Brand"></p-column>
         <p-column field="color" header="Color"></p-column>
 
-        <p-column>
+        <p-column header="Actions">
           <ng-template pTemplate="header">
             Actions
           </ng-template>
           <ng-template let-car="rowData" pTemplate="body">
             <button pButton (click)="openModalUpdateUser(modalUpdateUser,car)" title="Update User" class="ui-button-primary" icon="fa fa-pencil"></button>
-            <button pButton  (click)="openModalUpdateUser(modalAddUser,car)"  title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
+            <button pButton  (click)="openModalUpdateUser(modalAddUser,car)" title="Delete User" class="ui-button-danger" icon="fa fa-trash-o"></button>
           </ng-template>
         </p-column>
 
@@ -268,6 +268,14 @@
               <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-10">
                 <input [attr.value]="car.year" type="text" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-datetime-local-input1" class="col-md-2 col-sm-2 col-form-label">
+                Date and time
+              </label>
+              <div class="col-md-2 col-sm-10">
+                <input class="form-control" type="date" value="2011-08-19" id="example-datetime-local-input1">
               </div>
             </div>
           </form>

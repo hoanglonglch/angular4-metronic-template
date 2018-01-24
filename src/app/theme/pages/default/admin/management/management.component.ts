@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -10,11 +10,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ManagementComponent implements OnInit, AfterViewInit{
 
-  //test
-  loading= false;
+  //
+  dataTableLoading= false;
   car: Car;
   cars: Car[];
-  cols: any[];
   dummyCars = [
     {
       vin:'2143',
@@ -156,6 +155,9 @@ export class ManagementComponent implements OnInit, AfterViewInit{
     },
 
   ]
+  modalOptions: NgbModalOptions = {
+    size: 'lg'
+  }
 
   constructor(private modalService: NgbModal)  {}
 
@@ -163,20 +165,15 @@ export class ManagementComponent implements OnInit, AfterViewInit{
     this.cars = this.dummyCars;
   }
 
-  ngAfterViewInit()  {
-    /*this._script.load('.m-grid__item.m-grid__item--fluid.m-wrapper',
-      'assets/app/js/management.js');*/
-  }
+  ngAfterViewInit()  {}
 
   openModalUpdateUser(content: TemplateRef<Car> ,carFromTable: Car) {
     this.car = carFromTable;
-    this.modalService.open(content);
+    this.modalService.open(content,this.modalOptions);
   }
 
   openModalAddUser(content:TemplateRef<Car>) {
-    this.modalService.open(content).result.then((result) => {
-    }, (reason) => {
-    });
+    this.modalService.open(content,this.modalOptions);
   }
 
 }
